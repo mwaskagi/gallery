@@ -9,10 +9,11 @@
     <title>Darkroom</title>
 </head>
 <body style="background-color: #f4f4f4;">
+  
   <div class="navbar-fixed">
     <nav class="turquoise" >
       <div class="nav-wrapper  container">
-        <h1 class="text-bold text-center">MILESTONE 2</h1>
+        
         <a href="/" class="brand-logo ">Darkroom</a>
         <form class="right">
           <div class="input-field ">
@@ -30,6 +31,8 @@
   </div>
     
     <div class="container">
+      <h1>MILESTONE 2</h1>
+        <br>
         <h1>Image Upload </h1>
         <%= typeof msg != 'undefined' ? msg : '' %>
         <form action="/upload" method = "POST" enctype="multipart/form-data">

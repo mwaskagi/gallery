@@ -1,27 +1,47 @@
-
 pipeline {
   agent any
-
+  tools{
+      nodejs "nodejs"
+  }
   stages {
     stage('Cloning Git') {
       steps {
-        git branch:'master', url:'git@github.com:mwaskagi/gallery.git'
+        git branch:'master', url:'https://github.com/mwaskagi/gallery.git'
       }
     }
-    stage('Build') {
+    stage('version') {
        steps {
-         echo "Build"
+         sh "npm version"
        }
+    }
+    stage('Mocha & Chai'){
+        steps{
+            sh "npm install -g mocha"
+            sh "npm install --save-dev chai"
+        }
     }
     stage('Test') {
       steps {
          sh "npm test"
       }
     }
-    post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+
+  }
+  post {
+         changed {
+            script {
+                if (currentBuild.currentResult == 'FAILURE') { 
+                    emailext subject: '$DEFAULT_SUBJECT',
+                        body: '$DEFAULT_CONTENT',
+                        recipientProviders: [
+                            [$class: 'CulpritsRecipientProvider'],
+                            [$class: 'DevelopersRecipientProvider'],
+                            [$class: 'RequesterRecipientProvider'] 
+                        ], 
+                        replyTo: '$DEFAULT_REPLYTO',
+                        to: '$DEFAULT_RECIPIENTS'
+                }
+            }
         }
     }
-  }
 }

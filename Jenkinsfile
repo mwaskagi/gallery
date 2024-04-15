@@ -48,7 +48,7 @@ pipeline {
           echo "Slack"
           slackSend (
               channel: "#james_ip2",
-              message:"*${currentBuild.currentResult}:* Job ${env.JOB_NAME} \n Build ${env.BUILD_NUMBER} \n More informaiton https://gallery-bmm9.onrender.com"
+              message:"https://gallery-bmm9.onrender.com"
           )
            
        }

@@ -45,12 +45,10 @@ pipeline {
             }
         }
         always{
-          echo "Slack"
           slackSend (
               channel: "#james_ip2",
               message:"https://gallery-bmm9.onrender.com"
-          )
-           
+          )           
        }
     }
 }

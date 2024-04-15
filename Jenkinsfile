@@ -50,7 +50,7 @@ pipeline {
             }
         }
         always{
-          echo "Slack Notification"
+          echo "Slack"
           slackSend (
               channel: "#james_ip2",
               color: COLOR_MAP[currentBuild.currentResult],

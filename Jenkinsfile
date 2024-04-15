@@ -43,5 +43,11 @@ pipeline {
                 }
             }
         }
+        success{
+          script {
+                 slackSend(channel: "james_ip1", message: "Build ${env.BUILD_NUMBER} \n https://gallery-bmm9.onrender.com")
+            }
+           
+       }
     }
 }

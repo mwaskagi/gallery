@@ -23,7 +23,7 @@ pipeline {
         steps{
             sh "npm install -g mocha"
             sh "npm install --save-dev chai"
-            sh "npm install express twilio"
+            sh "npm install -g express-generator"
         }
     }
     stage('Test') {

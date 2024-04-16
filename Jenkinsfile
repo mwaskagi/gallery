@@ -54,7 +54,7 @@ pipeline {
           slackSend (
               channel: "#james_ip2",
               color: COLOR_MAP[currentBuild.currentResult],
-              message:"*${currentBuild.currentResult}:* Job ${env.JOB_NAME} \n Build ${env.BUILD_NUMBER} \n More informaiton https://gallery-bmm9.onrender.com"
+              message:"*${currentBuild.currentResult}:* Job ${env.JOB_NAME} \n Build ${env.BUILD_NUMBER} \n More informaiton https://gallery1-5lgg.onrender.com"
           )
            
        }
